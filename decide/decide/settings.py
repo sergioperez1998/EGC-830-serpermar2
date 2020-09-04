@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,7 @@ SECRET_KEY = '^##ydkswfu0+=ofw0l#$kv^8n)0$i(qd&d&ol#p9!b$8*5%j1+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -68,7 +69,19 @@ MODULES = [
     'voting',
 ]
 
-BASEURL = 'http://localhost:8000'
+BASEURL = 'https://egc-830-serpermar2.herokuapp.com'
+
+APIS = {
+    	'authentication': 'https://egc-830-serpermar2.herokuapp.com', 
+    	'base': 'https://egc-830-serpermar2.herokuapp.com',
+    	'booth': 'https://egc-830-serpermar2.herokuapp.com',
+    	'census': 'https://egc-830-serpermar2.herokuapp.com',
+    	'mixnet': 'https://egc-830-serpermar2.herokuapp.com',
+   		'postproc': 'https://egc-830-serpermar2.herokuapp.com',
+    	'store': 'https://egc-830-serpermar2.herokuapp.com',
+    	'visualizer': 'https://egc-830-serpermar2.herokuapp.com',
+    	'voting': 'https://egc-830-serpermar2.herokuapp.com',
+		}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -160,3 +173,4 @@ except ImportError:
 
 
 INSTALLED_APPS = INSTALLED_APPS + MODULES
+django_heroku.settings(locals())
